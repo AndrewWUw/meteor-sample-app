@@ -27,8 +27,8 @@ jobs:
           key: ${{ runner.os }}-dependencies-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: meteor npm ci
+        # if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: meteor npm i
 
   ui-chrome-tests:
     timeout-minutes: 15
@@ -66,3 +66,8 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: '@cypress/github-action'
+
+      - name: Print Dashboard URL
+        run: |
+          echo Cypress finished with: ${{ steps.cypress.outcome }}
+          echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
