@@ -53,7 +53,7 @@ jobs:
         with:
           start: meteor npm run start
           wait-on: 'http://localhost:3000'
-          wait-on-timeout: 180
+          wait-on-timeout: 300
           browser: chrome
           record: true
           parallel: true
