@@ -3,7 +3,7 @@ name: Run Cypress Tests
 on: workflow_dispatch
 
 jobs:
-  install:
+  run-cypress-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,7 +40,7 @@ jobs:
           record: true
           parallel: false
           group: 'UI - Chrome'
-          spec: tests/cypress/integration/*
+          spec: tests/cypress/integration/**/*
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
