@@ -14,10 +14,10 @@ jobs:
         with:
           meteor-release: '2.5.1'
 
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
+      # - name: Cypress install
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     runTests: false
 
       - name: Cache dependencies
         id: cache-dependencies
@@ -31,6 +31,7 @@ jobs:
         run: meteor npm ci
 
       - name: 'UI Tests - Chrome'
+        id: cypress
         uses: cypress-io/github-action@v2
         with:
           start: meteor npm run start
